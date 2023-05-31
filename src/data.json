@@ -1,0 +1,93 @@
+[
+    {
+      "logo": "mcd.png",
+      "brand_name": "McDonalds",
+      "brand_tagline": "Big Mac Jumbo",
+      "status": "Pending",
+      "item": "",
+      "quantity": 2897,
+      "price": 9,
+      "placed_on": "2022-06-03"
+    },
+    {
+      "logo": "Tesla.png",
+      "brand_name": "Tesla",
+      "brand_tagline": "Model X",
+      "status": "Confirmed",
+      "item": "",
+      "quantity": 9387,
+      "price": 3000,
+      "placed_on": "2022-12-02"
+    },
+    {
+      "logo": "GM.png",
+      "brand_name": "GM",
+      "brand_tagline": "Alternator Car Parts",
+      "status": "Delivered",
+      "item": "",
+      "quantity": 402,
+      "price": 49,
+      "placed_on": "2023-04-19"
+    },
+    {
+      "logo": "AARP.png",
+      "brand_name": "AARP",
+      "brand_tagline": "Health Care Package Adult A1",
+      "status": "Refund Completed",
+      "item": "",
+      "quantity": 89,
+      "price": 299,
+      "placed_on": "2023-01-02"
+    },
+    {
+      "logo": "DISNEP.png",
+      "brand_name": "Disney",
+      "brand_tagline": "Renewal Subscription",
+      "status": "Confirmed",
+      "item": "",
+      "quantity": 276,
+      "price": 23,
+      "placed_on": "2023-09-04"
+    },
+    {
+      "logo": "PRIME.png",
+      "brand_name": "Prime Therapeutics",
+      "brand_tagline": "Natural oil",
+      "status": "Delivered",
+      "item": "",
+      "quantity": 1098,
+      "price": 135,
+      "placed_on": "2022-06-03"
+    },
+    {
+      "logo": "MATCH.png",
+      "brand_name": "Match.com",
+      "brand_tagline": "Renewal Subscription",
+      "status": "Refund Completed",
+      "item": "",
+      "quantity": 4298,
+      "price": 48,
+      "placed_on": "2022-12-02"
+    },
+    {
+      "logo": "CHEVY.png",
+      "brand_name": "Chevy",
+      "brand_tagline": "FX234A",
+      "status": "Confirmed",
+      "item": "",
+      "quantity": 1928,
+      "price": 90,
+      "placed_on": "2023-04-19"
+    },
+    {
+      "logo": "gm2.png",
+      "brand_name": "",
+      "brand_tagline": "Car Parts AJZ89B",
+      "status": "Pending",
+      "item": "",
+      "quantity": 640,
+      "price": 167,
+      "placed_on": "2023-01-02"
+    }
+  ]
+  
