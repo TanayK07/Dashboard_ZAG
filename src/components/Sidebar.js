@@ -1,4 +1,4 @@
-import { Box, Flex,HStack, Icon, Text, VStack, Image } from '@chakra-ui/react';
+import { Box, Button, Flex, HStack, Icon, Text, VStack, Image } from '@chakra-ui/react';
 import { FaCog, FaTh } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowTrendUp } from '@fortawesome/free-solid-svg-icons';
@@ -20,20 +20,51 @@ function Sidebar() {
     >
       <Flex direction="column" alignItems="center">
         <Image src="logo.png" alt="Logo" boxSize={8} w={70} h={45} mr={2} mb={10} />
-        <HStack alignItems="center" spacing={10} ml={0}>
-        <VStack spacing={7} alignItems="center">
-            <FontAwesomeIcon icon={faArrowTrendUp} />
-            <Icon as={FaTh} boxSize={4} />
-            <Icon as={FaCog} boxSize={4} />
-          </VStack>
-<VStack spacing={6} alignItems="left">
+        <VStack spacing={7} alignItems="flex-start">
 
-          <Text>Reports</Text>
-          <Text>Workspaces</Text>
-          <Text>Settings</Text>
+          <Button
+            variant="ghost"
+            colorScheme="blue"
+            size="sm"
+            w="100%"
+            color="black"
+            _hover={{ color: '#1B59F8' }}
+          >
+            <HStack alignItems="center" justifyContent="flex-start" spacing={0}>
+              <FontAwesomeIcon icon={faArrowTrendUp} mr={2} />
+              <Text p={5}>Reports</Text>
+            </HStack>
+          </Button>
 
-          </VStack>
-        </HStack>
+          <Button
+            variant="ghost"
+            colorScheme="blue"
+            size="sm"
+            w="100%"
+            color="black"
+            _hover={{ color: '#1B59F8' }}
+          >
+            <HStack alignItems="center" justifyContent="flex-start" spacing={0}>
+              <Icon as={FaTh} />
+              <Text p={2}>Workspaces</Text>
+            </HStack>
+          </Button>
+
+          <Button
+            variant="ghost"
+            colorScheme="blue"
+            size="sm"
+            w="100%"
+            color="black"
+            _hover={{ color: '#1B59F8' }}
+          >
+            <HStack alignItems="center" justifyContent="flex-start" spacing={0}>
+              <Icon as={FaCog} />
+              <Text p={5}>Settings</Text>
+            </HStack>
+          </Button>
+
+        </VStack>
       </Flex>
     </Box>
   );
