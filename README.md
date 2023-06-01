@@ -1,9 +1,9 @@
-# Dashboard_ZAG 
-# Switch to Branch master 
+
 # React Dashboard App
 
 This is a React dashboard app that displays orders data and allows filtering and sorting of orders.
 
+## Switch to Branch master 
 ## Prerequisites
 
 - Node.js (v12.0.0 or higher)
