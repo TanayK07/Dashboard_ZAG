@@ -6,7 +6,7 @@ import { faArrowTrendUp } from '@fortawesome/free-solid-svg-icons';
 function Sidebar() {
   return (
     <Box
-      bg="gray.200"
+      bg="white"
       w={230}
       h="100vh"
       position="fixed"
