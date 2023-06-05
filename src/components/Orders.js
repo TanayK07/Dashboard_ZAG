@@ -78,9 +78,8 @@ function RenderOrders() {
     setEditOrder(order);
     setEditOrderIndex(index);
   };
-
   const handleSaveEdit = () => {
-    const updatedOrders = orders.map((order, index) => {
+    const updatedFilteredOrders = filteredOrders.map((order, index) => {
       if (index === editOrderIndex) {
         return {
           ...order,
@@ -89,12 +88,17 @@ function RenderOrders() {
       }
       return order;
     });
-
+  
+    const updatedOrders = orders.map((order) => {
+      const index = filteredOrders.findIndex((o) => o.logo === order.logo);
+      return index !== -1 ? updatedFilteredOrders[index] : order;
+    });
+  
     setOrders(updatedOrders);
     setEditOrder(null);
     setEditOrderIndex(null);
   };
-
+  
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -255,14 +259,15 @@ function RenderOrders() {
             <FormControl>
               <FormLabel>Amount</FormLabel>
               <Input
-                defaultValue={editOrder?.price}
-                onChange={(event) =>
-                  setEditOrder((prevState) => {
-                    const newState = { ...prevState, price: event.target.value };
-                    return newState;
-                  })
-                }
-              />
+  value={editOrder ? editOrder.price : ''}
+  onChange={(event) =>
+    setEditOrder((prevState) => {
+      const newState = { ...prevState, price: event.target.value };
+      return newState;
+    })
+  }
+/>
+
             </FormControl>
           </ModalBody>
           <ModalFooter>
