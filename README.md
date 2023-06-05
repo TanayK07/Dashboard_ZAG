@@ -2,6 +2,7 @@
 # React Dashboard App
 
 This is a React dashboard app that displays orders data and allows filtering and sorting of orders.
+Deployed at https://foodsampledashboard.netlify.app/
 
 ## Switch to Branch master 
 ## Prerequisites
