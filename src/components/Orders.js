@@ -57,8 +57,6 @@ function RenderOrders() {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
 
-
-
   const sortOrdersPlacedon = () => {
     const sorted = [...filteredOrders].sort((a, b) => {
       const aValue = a.placed_on;
@@ -76,7 +74,7 @@ function RenderOrders() {
   };
 
   const handleEditOrder = (order) => {
-    const index = filteredOrders.findIndex((o) => o.item === order.item);
+    const index = filteredOrders.findIndex((o) => o.logo === order.logo);
     setEditOrder(order);
     setEditOrderIndex(index);
   };
@@ -111,7 +109,7 @@ function RenderOrders() {
   const statusOptions = [
     { label: 'Confirmed', value: 'Confirmed' },
     { label: 'Delivered', value: 'Delivered' },
-    { label: 'Refund Completed', value: 'Refund Completed' },
+    { label: 'Refund Completed (30d)', value: 'Refund Completed' },
     { label: 'Pending', value: 'Pending' },
   ];
 
@@ -137,7 +135,15 @@ function RenderOrders() {
                   <PopoverContent>
                     <PopoverBody>
                       <VStack align="start" spacing={2}>
-                        <RadioGroup colorScheme="gray" value={filterStatus} onChange={handleStatusToggle}>
+                        <RadioGroup
+                          value={filterStatus}
+                          onChange={handleStatusToggle}
+                          borderColor="rgba(0, 0, 0, 0.3)"
+                          borderRadius="md"
+                       //   borderWidth={1}
+                          px={2}
+                          py={1}
+                        >
                           <Stack direction="column">
                             {statusOptions.map((option) => (
                               <Radio
@@ -146,12 +152,17 @@ function RenderOrders() {
                                 fontSize="sm"
                                 alignItems="center"
                                 lineHeight="1.2"
+                                px={2}
+                                py={1}
+                                _checked={{
+                                  bg: '#4F5E74',
+                                  borderColor: 'rgba(0, 0, 0, 0.3)',
+                                }}
                               >
                                 <Text
                                   style={{
-                                    fontFamily: 'Inter',
-                                    fontStyle: 'normal',
-                                    fontWeight: 400,
+                                    
+                                    fontWeight: 'normal',
                                     fontSize: '0.875rem',
                                     lineHeight: '1.0625rem',
                                     letterSpacing: '-0.154px',
@@ -203,7 +214,7 @@ function RenderOrders() {
         </Thead>
         <Tbody>
           {filteredSearchOrders.map((order) => (
-            <Tr key={order.item}>
+            <Tr key={order.logo}>
               <Td>
                 <Flex alignItems="center" spacing={4}>
                   <FontAwesomeIcon icon={farCircle} size="sm" color="gray" />
@@ -246,7 +257,10 @@ function RenderOrders() {
               <Input
                 defaultValue={editOrder?.price}
                 onChange={(event) =>
-                  setEditOrder({ ...editOrder, price: event.target.value })
+                  setEditOrder((prevState) => {
+                    const newState = { ...prevState, price: event.target.value };
+                    return newState;
+                  })
                 }
               />
             </FormControl>
