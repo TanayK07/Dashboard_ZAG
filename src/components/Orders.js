@@ -259,6 +259,7 @@ function RenderOrders() {
             <FormControl>
               <FormLabel>Amount</FormLabel>
               <Input
+              type='number'
   value={editOrder ? editOrder.price : ''}
   onChange={(event) =>
     setEditOrder((prevState) => {
