@@ -17,8 +17,8 @@ import data from '../data.json';
 
 function Dashboard() {
   // State hooks for managing data and UI state
-  const [orders, setOrders] = useState(data);
-  const [filterStatus, setFilterStatus] = useState('All');
+  const [orders, ] = useState(data);
+  const [filterStatus, ] = useState('All');
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   // Filtering the orders based on the selected status

@@ -41,7 +41,6 @@ function RenderOrders() {
   const [filterStatus, setFilterStatus] = useState('All');
   const [sortOrder, setSortOrder] = useState('asc');
   const [editOrder, setEditOrder] = useState(null);
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [editOrderIndex, setEditOrderIndex] = useState(null);
   const filteredOrders = filterStatus === 'All' ? orders : orders.filter((order) => order.status === filterStatus);
@@ -58,12 +57,7 @@ function RenderOrders() {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
 
-  const filteredStatusOrders = filteredOrders.filter((order) => order.status === filterStatus);
-  const confirmedCount = filteredStatusOrders.filter((order) => order.status === 'Confirmed').length;
 
-  const handleCollapseToggle = () => {
-    setIsCollapsed(!isCollapsed);
-  };
 
   const sortOrdersPlacedon = () => {
     const sorted = [...filteredOrders].sort((a, b) => {
@@ -81,9 +75,6 @@ function RenderOrders() {
     setFilterStatus(status);
   };
 
-
-
-  
   const handleEditOrder = (order) => {
     const index = filteredOrders.findIndex((o) => o.item === order.item);
     setEditOrder(order);
@@ -95,7 +86,7 @@ function RenderOrders() {
       if (index === editOrderIndex) {
         return {
           ...order,
-          brand_name: editOrder.brand_name,
+          price: editOrder.price,
         };
       }
       return order;
@@ -251,11 +242,11 @@ function RenderOrders() {
           <ModalCloseButton />
           <ModalBody>
             <FormControl>
-              <FormLabel>Brand Name</FormLabel>
+              <FormLabel>Amount</FormLabel>
               <Input
-                defaultValue={editOrder?.brand_name}
+                defaultValue={editOrder?.price}
                 onChange={(event) =>
-                  setEditOrder({ ...editOrder, brand_name: event.target.value })
+                  setEditOrder({ ...editOrder, price: event.target.value })
                 }
               />
             </FormControl>
