@@ -5,7 +5,8 @@ import {
   ChakraProvider,
   extendTheme
 } from '@chakra-ui/react';
-
+// Supports weights 100-900
+import '@fontsource-variable/inter';
 const theme = extendTheme({
   colors: {
     blue: {
@@ -13,14 +14,14 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    body: "'Lato', sans-serif",
+    body: "'inter', sans-serif",
   },
 });
 const GlobalStyles = () => (
   <Global
     styles={`
       @font-face {
-        font-family: 'Lato';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
         src: local('Lato Regular'), local('Lato-Regular'),

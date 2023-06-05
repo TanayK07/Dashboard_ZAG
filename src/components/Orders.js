@@ -5,29 +5,31 @@ import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons';
 import { Popover, PopoverTrigger, PopoverContent, PopoverBody, RadioGroup, VStack, Radio } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import {
-    Stack,
-    Button,
-    Flex, Image,
-    Text,
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    FormControl,
-    FormLabel,
-    Input,
-    HStack
+  Stack,
+  Button,
+  Flex,
+  Image,
+  Text,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  FormControl,
+  FormLabel,
+  Input,
+  HStack
 } from '@chakra-ui/react';
 import data from '../data.json';
+
 function RenderOrders() {
   const [orders, setOrders] = useState(data);
   const [filterStatus, setFilterStatus] = useState('All');
@@ -35,7 +37,9 @@ function RenderOrders() {
   const [editOrder, setEditOrder] = useState(null);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [editOrderIndex, setEditOrderIndex] = useState(null);
   const filteredOrders = filterStatus === 'All' ? orders : orders.filter((order) => order.status === filterStatus);
+
   const sortOrders = () => {
     const sorted = [...filteredOrders].sort((a, b) => {
       const aValue = a.price;
@@ -47,11 +51,14 @@ function RenderOrders() {
     setOrders(sorted);
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
+
   const filteredStatusOrders = filteredOrders.filter((order) => order.status === filterStatus);
   const confirmedCount = filteredStatusOrders.filter((order) => order.status === 'Confirmed').length;
+
   const handleCollapseToggle = () => {
     setIsCollapsed(!isCollapsed);
   };
+
   const sortOrdersPlacedon = () => {
     const sorted = [...filteredOrders].sort((a, b) => {
       const aValue = a.placed_on;
@@ -63,40 +70,50 @@ function RenderOrders() {
     setOrders(sorted);
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
+
   const handleStatusToggle = (status) => {
     setFilterStatus(status);
   };
-  const handleEditOrder = (order) => {
+
+  const handleEditOrder = (order) => { // Update handleEditOrder to receive order
     setEditOrder(order);
   };
+
   const handleSaveEdit = () => {
-    const updatedOrders = orders.map((o) => {
-      if (o.item === editOrder.item) {
-        return {
-          ...o,
-          brand_name: editOrder.brand_name,
-        };
-      }
-      return o;
+    setOrders((prevOrders) => {
+      const updatedOrders = prevOrders.map((order) => {
+        if (order.item === editOrder.item) {
+          return {
+            ...order,
+            brand_name: editOrder.brand_name,
+          };
+        }
+        return order;
+      });
+      return updatedOrders;
     });
-    setOrders(updatedOrders);
+
     setEditOrder(null);
   };
+
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
+
   const filteredSearchOrders = filteredOrders.filter((order) => {
     return (
       order.brand_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       order.placed_on.toLowerCase().includes(searchTerm.toLowerCase())
     );
   });
+
   const statusOptions = [
     { label: 'Confirmed', value: 'Confirmed' },
     { label: 'Delivered', value: 'Delivered' },
     { label: 'Refund Completed', value: 'Refund Completed' },
     { label: 'Pending', value: 'Pending' },
   ];
+
   return (
     <>
       <Table mt={-5} variant="simple">
@@ -131,7 +148,7 @@ function RenderOrders() {
                               >
                                 <Text
                                   style={{
-                                    fontFamily: 'Lato',
+                                    fontFamily: 'Inter',
                                     fontStyle: 'normal',
                                     fontWeight: 400,
                                     fontSize: '0.875rem',
@@ -244,4 +261,5 @@ function RenderOrders() {
     </>
   );
 }
+
 export default RenderOrders;

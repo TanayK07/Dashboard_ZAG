@@ -45,7 +45,7 @@ function Dashboard() {
             {/* Orders section header */}
             <HStack justifyContent="space-between" width="100%">
               <Text fontSize="2xl" fontWeight="bold">Orders</Text>
-              <Button bgColor={"#1B59F8"} color="white" leftIcon={<AddIcon />} variant="solid" ml="auto">
+              <Button bgColor={"#1B59F8"} color="white" leftIcon={<AddIcon />} variant="solid" >
                 Add Orders
               </Button>
             </HStack>
@@ -74,9 +74,11 @@ function Dashboard() {
                 />
               </HStack>
               {/* Rendering the orders component */}
-              {isCollapsed ? null : RenderOrders()}
-            </VStack>
+              {isCollapsed ? null : <RenderOrders />}
+          
           </VStack>
+          </VStack>
+
         </Flex>
       </Grid>
     </Box>
