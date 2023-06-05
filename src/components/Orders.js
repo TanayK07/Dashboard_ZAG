@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown, faCaretDown, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons';
-import { Popover, PopoverTrigger, PopoverContent, PopoverBody, RadioGroup, VStack, Radio } from '@chakra-ui/react';
-import { SearchIcon } from '@chakra-ui/icons';
 import {
   Stack,
   Button,
@@ -26,8 +24,16 @@ import {
   FormControl,
   FormLabel,
   Input,
-  HStack
+  HStack,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+  RadioGroup,
+  VStack,
+  Radio,
 } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 import data from '../data.json';
 
 function RenderOrders() {
@@ -75,25 +81,29 @@ function RenderOrders() {
     setFilterStatus(status);
   };
 
-  const handleEditOrder = (order) => { // Update handleEditOrder to receive order
+
+
+  
+  const handleEditOrder = (order) => {
+    const index = filteredOrders.findIndex((o) => o.item === order.item);
     setEditOrder(order);
+    setEditOrderIndex(index);
   };
 
   const handleSaveEdit = () => {
-    setOrders((prevOrders) => {
-      const updatedOrders = prevOrders.map((order) => {
-        if (order.item === editOrder.item) {
-          return {
-            ...order,
-            brand_name: editOrder.brand_name,
-          };
-        }
-        return order;
-      });
-      return updatedOrders;
+    const updatedOrders = orders.map((order, index) => {
+      if (index === editOrderIndex) {
+        return {
+          ...order,
+          brand_name: editOrder.brand_name,
+        };
+      }
+      return order;
     });
 
+    setOrders(updatedOrders);
     setEditOrder(null);
+    setEditOrderIndex(null);
   };
 
   const handleSearch = (event) => {
